@@ -1,1 +1,1 @@
-# neuralviz
+# NeuralViz
