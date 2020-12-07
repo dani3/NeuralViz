@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 project ("neuralviz")
 
 # Add source to this project's executable.
-add_executable (neuralviz "src/Main.cpp" "src/swc/SwcReader.h" "src/swc/SwcReader.cpp")
+add_executable (neuralviz "src/Main.cpp" "src/SWC/SwcReader.h" "src/SWC/SwcReader.cpp" "src/Core/Log.cpp" "src/Core/Log.h" "src/Core/Core.h")
 
 # Dependencies
 find_package(spdlog REQUIRED)
