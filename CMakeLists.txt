@@ -3,13 +3,16 @@
 #
 cmake_minimum_required (VERSION 3.8)
 
-# specify the C++ standard
+# Specify the C++ standard
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project ("neuralviz")
 
 # Add source to this project's executable.
-add_executable (neuralviz "src/neuralviz.cpp")
+add_executable (neuralviz "src/Main.cpp" "src/swc/SwcReader.h" "src/swc/SwcReader.cpp")
 
-# TODO: Add tests and install targets if needed.
+# Dependencies
+find_package(spdlog REQUIRED)
+
+target_link_libraries(neuralviz PRIVATE spdlog::spdlog)
