@@ -19,3 +19,9 @@ To build the project you will need to install the following packages using _vcpk
     ```sh
     $ ./vcpkg.exe install spdlog
     ```
+
+## SWC Files
+
+SWC files are a widely used format to store neuron morphologies, and are used to share digitally reconstructed neurons using [NeuroMorpho](http://www.neuromorpho.org/).
+
+The format specification is described [here](http://www.neuronland.org/NLMorphologyConverter/MorphologyFormats/SWC/Spec.html).
