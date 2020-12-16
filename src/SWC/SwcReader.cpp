@@ -65,7 +65,8 @@ namespace NeuralViz {
                 float radius = std::stof(elems[5]);
                 int parent = std::stoi(elems[6]);
 
-                neuron->Push(Node(id, type, Vec3<float>(x, y, z), radius, parent));
+                neuron->Push(
+                    Node(id, type, Vec3<float>(x, y, z), radius, parent));
             }
         }
 

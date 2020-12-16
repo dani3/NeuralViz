@@ -7,7 +7,7 @@ namespace NeuralViz {
     class Neuron {
     public:
         Neuron();
-        ~Neuron();
+        virtual ~Neuron();
 
         void Push(const Node& node);
 
