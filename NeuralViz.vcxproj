@@ -51,7 +51,9 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories); $(SolutionDir)\src; $(SolutionDir)\vendor\spdlog\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(Qt_INCLUDEPATH_);%(AdditionalIncludeDirectories); $(SolutionDir)\src; $(SolutionDir)\vendor\spdlog\include; $(SolutionDir)\res</AdditionalIncludeDirectories>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <PreprocessorDefinitions>$(Qt_DEFINES_);%(PreprocessorDefinitions); ENABLE_ASSERTS; DEBUG</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
@@ -95,6 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Log.cpp" />
+    <ClCompile Include="src\GUI\MainUI.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Morpho\Morphology.cpp" />
     <ClCompile Include="src\Morpho\Neuron.cpp" />
@@ -104,11 +107,15 @@
   <ItemGroup>
     <ClInclude Include="src\Core\Core.h" />
     <ClInclude Include="src\Core\Log.h" />
+    <QtMoc Include="src\GUI\MainUI.h" />
     <ClInclude Include="src\Morpho\Morphology.h" />
     <ClInclude Include="src\Morpho\Neuron.h" />
     <ClInclude Include="src\Morpho\Node.h" />
     <ClInclude Include="src\SWC\SwcReader.h" />
     <ClInclude Include="src\Utils\Vec3.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="res\gui\MainWindow.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

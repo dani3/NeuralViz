@@ -42,6 +42,9 @@
     <ClCompile Include="src\SWC\SwcReader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\GUI\MainUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Core\Core.h">
@@ -65,5 +68,15 @@
     <ClInclude Include="src\Utils\Vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="src\GUI\MainUI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="res\gui\MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>
