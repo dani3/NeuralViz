@@ -8,9 +8,7 @@ int main(int argc, char* argv[]) {
     NeuralViz::Log::Init();
     LOG_INFO("NeuralViz started");
 
-    QApplication qapp(argc, argv);
-
-    NeuralViz::Application app(qapp);
+    NeuralViz::Application app(argc, argv);
 
     return app.Run();
 }
