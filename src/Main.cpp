@@ -4,10 +4,10 @@
 #include <Core/Core.h>
 #include <Core/Application.h>
 
+#include <iostream>
+
 int main(int argc, char* argv[]) {
     NeuralViz::Log::Init();
-    LOG_INFO("NeuralViz started");
-
     NeuralViz::Application app(argc, argv);
 
     return app.Run();

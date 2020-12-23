@@ -78,7 +78,7 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -97,7 +97,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Log.cpp" />
-    <ClCompile Include="src\GUI\MainUI.cpp" />
+    <ClCompile Include="src\Core\Application.cpp" />
+    <ClCompile Include="src\GUI\MainView.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Morpho\Morphology.cpp" />
     <ClCompile Include="src\Morpho\Neuron.cpp" />
@@ -107,7 +108,8 @@
   <ItemGroup>
     <ClInclude Include="src\Core\Core.h" />
     <ClInclude Include="src\Core\Log.h" />
-    <QtMoc Include="src\GUI\MainUI.h" />
+    <QtMoc Include="src\Core\Application.h" />
+    <QtMoc Include="src\GUI\MainView.h" />
     <ClInclude Include="src\Morpho\Morphology.h" />
     <ClInclude Include="src\Morpho\Neuron.h" />
     <ClInclude Include="src\Morpho\Node.h" />

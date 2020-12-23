@@ -10,13 +10,17 @@ namespace NeuralViz {
     Application::Application(int argc, char* argv[], QWidget* parent)
         : QObject(parent)
     {
+        LOG_INFO("NeuralViz started");
+
         m_App = std::make_unique<QApplication>(argc, argv);
         m_Ui = std::make_unique <NeuralViz::GUI::MainView>();
 
         InitSignals();
     }
 
-    Application::~Application() {}
+    Application::~Application() {
+        LOG_INFO("Exiting NeuralViz");
+    }
 
     int Application::Run() {
         m_Ui->show();
