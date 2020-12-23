@@ -2,18 +2,15 @@
  * @brief defines the entry point for the application.
  */
 #include <Core/Core.h>
-
-#include <GUI/MainUI.h>
+#include <Core/Application.h>
 
 int main(int argc, char* argv[]) {
     NeuralViz::Log::Init();
     LOG_INFO("NeuralViz started");
 
-    QApplication app(argc, argv);
+    QApplication qapp(argc, argv);
 
-    NeuralViz::GUI::MainUI mainUi;
-    mainUi.setWindowState(Qt::WindowMaximized);
-    mainUi.show();
+    NeuralViz::Application app(qapp);
 
-    return app.exec();
+    return app.Run();
 }
