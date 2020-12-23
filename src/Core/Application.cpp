@@ -8,6 +8,7 @@ namespace NeuralViz {
         : QMainWindow(parent), m_App(app)
     {
         InitUI();
+        InitSignals();
     }
 
     Application::~Application() {}
@@ -46,5 +47,14 @@ namespace NeuralViz {
         manipulator->setLinearSpeed(50.f);
         manipulator->setLookSpeed(180.f);
         manipulator->setCamera(camera);
+    }
+
+    void Application::InitSignals() {
+        connect(m_Ui.actionExit, SIGNAL(triggered()), this, SLOT(OnExit()));
+        connect(&m_App, SIGNAL(aboutToQuit()), this, SLOT(OnExit()));
+    }
+
+    void Application::OnExit() {
+        m_App.quit();
     }
 }

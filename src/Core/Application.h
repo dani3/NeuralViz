@@ -15,6 +15,8 @@
 
 namespace NeuralViz {
     class Application : public QMainWindow {
+        Q_OBJECT
+
     public:
         Application(QApplication& app, QWidget* parent = nullptr);
         ~Application();
@@ -24,6 +26,10 @@ namespace NeuralViz {
     private:
         void InitUI();
         void InitCamera();
+        void InitSignals();
+
+    public slots:
+        void OnExit();
 
     private:
         QApplication& m_App;
