@@ -2,6 +2,9 @@
 
 #include <QtGui>
 #include <Qt3DRender>
+#include <QFileDialog>
+
+#include <filesystem>
 
 namespace NeuralViz {
     namespace GUI {
@@ -20,8 +23,11 @@ namespace NeuralViz {
             m_Window.get()->setRootEntity(m_Scene.get());
 
             InitCamera();
+            InitSignals();
+        }
 
-            connect(m_Ui.actionExit, SIGNAL(triggered()), this, SIGNAL(Exit()));
+        MainView::~MainView() {
+            LOG_INFO("Destroying MainView");
         }
 
         void MainView::InitCamera() {
@@ -36,6 +42,21 @@ namespace NeuralViz {
             manipulator->setLinearSpeed(50.f);
             manipulator->setLookSpeed(180.f);
             manipulator->setCamera(camera);
+        }
+
+        void MainView::InitSignals() {
+            connect(m_Ui.actionExit, SIGNAL(triggered()), this, SIGNAL(Exit()));
+            connect(m_Ui.actionLoad, SIGNAL(triggered()), this, SLOT(OnLoadFile()));
+        }
+
+        void MainView::OnLoadFile() {
+            std::filesystem::path cwd = std::filesystem::current_path();
+            QString filePath = QFileDialog::getOpenFileName(this,
+                tr("Load SWC File"), QString(cwd.string().c_str()), tr("SWC Files (*.swc)"));
+
+            if (!filePath.isEmpty()) {
+                emit(LoadFile(filePath));
+            }
         }
     }
 }

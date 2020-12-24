@@ -6,6 +6,8 @@
  */
 #include <Core/Application.h>
 
+#include <SWC/SwcReader.h>
+
 namespace NeuralViz {
     Application::Application(int argc, char* argv[], QWidget* parent)
         : QObject(parent)
@@ -19,7 +21,7 @@ namespace NeuralViz {
     }
 
     Application::~Application() {
-        LOG_INFO("Exiting NeuralViz");
+        LOG_INFO("Destroying application");
     }
 
     int Application::Run() {
@@ -29,9 +31,16 @@ namespace NeuralViz {
 
     void Application::InitSignals() {
         connect(m_Ui.get(), SIGNAL(Exit()), this, SLOT(OnExit()));
+        connect(m_Ui.get(), SIGNAL(LoadFile(QString&)), this, SLOT(OnLoadFile(QString&)));
     }
 
     void Application::OnExit() {
         m_App->quit();
+    }
+
+    void Application::OnLoadFile(QString& filePath) {
+        LOG_INFO("Loading SWC file: {}", filePath.toStdString());
+
+        std::unique_ptr<NeuralViz::Neuron> neuron = SwcReader::Parse(filePath);
     }
 }

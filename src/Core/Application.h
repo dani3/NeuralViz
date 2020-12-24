@@ -8,8 +8,7 @@
 
 #include <Core/Core.h>
 #include <GUI/MainView.h>
-
-#include <memory>
+#include <Morpho/Neuron.h>
 
 #include <Qt3DCore>
 
@@ -19,7 +18,7 @@ namespace NeuralViz {
 
     public:
         Application(int argc, char* argv[], QWidget* parent = nullptr);
-        ~Application();
+        virtual ~Application();
 
         int Run();
 
@@ -28,9 +27,12 @@ namespace NeuralViz {
 
     private slots:
         void OnExit();
+        void OnLoadFile(QString& filePath);
 
     private:
         std::unique_ptr<QApplication> m_App;
         std::unique_ptr<NeuralViz::GUI::MainView> m_Ui;
+
+        std::shared_ptr<NeuralViz::Neuron> m_Neuron;
     };
 }

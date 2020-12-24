@@ -2,8 +2,6 @@
 
 #include <Core/Core.h>
 
-#include <memory>
-
 #include <QtWidgets/QMainWindow>
 #include <Qt3DCore>
 #include <Qt3DExtras>
@@ -17,12 +15,18 @@ namespace NeuralViz {
 
         public:
             MainView(QWidget* parent = Q_NULLPTR);
+            virtual ~MainView();
 
         private:
             void InitCamera();
+            void InitSignals();
 
         signals:
             void Exit();
+            void LoadFile(QString& filePath);
+
+        private slots:
+            void OnLoadFile();
 
         private:
             Ui::MainWindow m_Ui;

@@ -3,7 +3,6 @@
 
 #include <sstream>
 #include <fstream>
-#include <iostream>
 #include <string>
 
 namespace NeuralViz {
@@ -18,11 +17,10 @@ namespace NeuralViz {
         }
     }
 
-    std::unique_ptr<Neuron> SwcReader::Parse(const std::string& path) {
+    std::unique_ptr<Neuron> SwcReader::Parse(const QString& path) {
         std::fstream file;
 
-        file.open(path);
-
+        file.open(path.toStdString());
         ASSERT(file.is_open(), "SWC file cannot be read.");
 
         std::unique_ptr<Neuron>neuron = std::make_unique<Neuron>();
