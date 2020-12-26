@@ -2,16 +2,22 @@
 
 namespace NeuralViz {
     Neuron::Neuron() {
-        m_Nodes = std::make_shared<std::vector<Node>>();
+        m_Nodes = std::vector<const Node*>();
     }
 
-    Neuron::~Neuron() {}
+    Neuron::~Neuron() {
+        LOG_INFO("Destroying neuron");
 
-    void Neuron::Push(const Node& node) {
-        m_Nodes->push_back(node);
+        for (size_t i = 0; i < m_Nodes.size(); ++i) {
+            delete m_Nodes[i];
+        }
     }
 
-    NeuronIterator::NeuronIterator(const std::shared_ptr<std::vector<Node>> elements, int index)
+    void Neuron::Push(const Node* node) {
+        m_Nodes.push_back(node);
+    }
+
+    NeuronIterator::NeuronIterator(const std::vector<const Node*> elements, int index)
         : m_Elements(elements), m_Index(index) {}
 
     NeuronIterator& NeuronIterator::operator++() {
@@ -37,7 +43,7 @@ namespace NeuralViz {
     }
 
     const Node& NeuronIterator::operator*() const {
-        return m_Elements->at(m_Index);
+        return *m_Elements[m_Index];
     }
 
     bool NeuronIterator::operator!=(const NeuronIterator& other) const {

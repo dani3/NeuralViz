@@ -41,6 +41,7 @@ namespace NeuralViz {
     void Application::OnLoadFile(QString& filePath) {
         LOG_INFO("Loading SWC file: {}", filePath.toStdString());
 
-        std::unique_ptr<NeuralViz::Neuron> neuron = SwcReader::Parse(filePath);
+        m_Neuron = SwcReader::Parse(filePath);
+        m_Ui->DrawNeuron(m_Neuron);
     }
 }

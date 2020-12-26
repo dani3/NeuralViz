@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Core/Core.h>
+
 #include <Utils/Vec3.h>
 
 namespace NeuralViz {
@@ -20,12 +22,13 @@ namespace NeuralViz {
         int getId() const { return m_SampleId; }
         Vec3<float> getOrigin() const { return m_Origin; }
         float getRadius() const { return m_Radius; }
+        int getParent() const { return m_Parent; }
 
     private:
-        int m_SampleId;
-        Type m_Type;
-        Vec3<float> m_Origin;
-        float m_Radius;
-        int m_Parent;
+        const int m_SampleId;
+        const Type m_Type;
+        const Vec3<float> m_Origin;
+        const float m_Radius;
+        const int m_Parent;
     };
 }

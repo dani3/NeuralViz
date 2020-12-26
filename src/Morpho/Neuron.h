@@ -6,7 +6,7 @@
 namespace NeuralViz {
     class NeuronIterator {
     public:
-        NeuronIterator(const std::shared_ptr<std::vector<Node>> elements, int index);
+        NeuronIterator(const std::vector<const Node*> elements, int index);
         const Node& operator*() const;
         NeuronIterator& operator++();
         NeuronIterator operator++(int);
@@ -16,7 +16,7 @@ namespace NeuralViz {
         bool operator==(const NeuronIterator& other) const;
 
     private:
-        const std::shared_ptr<std::vector<Node>> m_Elements;
+        const std::vector<const Node*> m_Elements;
         int m_Index = -1;
     };
 
@@ -28,12 +28,14 @@ namespace NeuralViz {
         Neuron();
         virtual ~Neuron();
 
-        void Push(const Node& node);
+        void Push(const Node* node);
+
+        int Size() const { return m_Nodes.size(); }
 
         Iterator begin() { return Iterator(m_Nodes, 0); }
-        Iterator end() { return Iterator(m_Nodes, m_Nodes->size()); }
+        Iterator end() { return Iterator(m_Nodes, m_Nodes.size()); }
 
     private:
-        std::shared_ptr<std::vector<Node>> m_Nodes;
+        std::vector<const Node*> m_Nodes;
     };
 }

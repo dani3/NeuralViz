@@ -64,9 +64,11 @@ namespace NeuralViz {
                 int parent = std::stoi(elems[6]);
 
                 neuron->Push(
-                    Node(id, type, Vec3<float>(x, y, z), radius, parent));
+                    new Node(id, type, Vec3<float>(x, y, z), radius, parent));
             }
         }
+
+        LOG_INFO("Parsed neuron succesfully");
 
         return neuron;
     }

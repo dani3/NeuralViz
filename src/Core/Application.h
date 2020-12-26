@@ -33,6 +33,6 @@ namespace NeuralViz {
         std::unique_ptr<QApplication> m_App;
         std::unique_ptr<NeuralViz::GUI::MainView> m_Ui;
 
-        std::shared_ptr<NeuralViz::Neuron> m_Neuron;
+        std::unique_ptr<NeuralViz::Neuron> m_Neuron;
     };
 }
