@@ -1,7 +1,8 @@
 #pragma once
 
-#include <Core/Core.h>
+#include <string>
 
+#include <Core/Core.h>
 #include <Utils/Vec3.h>
 
 namespace NeuralViz {
@@ -23,6 +24,8 @@ namespace NeuralViz {
         Vec3<float> getOrigin() const { return m_Origin; }
         float getRadius() const { return m_Radius; }
         int getParent() const { return m_Parent; }
+
+        friend std::ostream& operator<<(std::ostream& out, Node node);
 
     private:
         const int m_SampleId;
