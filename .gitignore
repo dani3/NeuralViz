@@ -33,3 +33,6 @@ out/
 # VS directory
 .vs/
 .vscode/
+
+# QMake
+x64/
